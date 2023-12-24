@@ -1,0 +1,89 @@
+interface Shape  
+{  
+double PI=3.14;  
+void area();  
+void perimeter();  
+}  
+interface Showable extends Shape  
+{  
+void show();  
+}  
+abstract class Circle implements Shape  
+{ 
+ double r;  
+Circle(double r)  
+{  
+this.r=r;  
+}   
+public void area()  
+{  
+System.out.println("area of circle"+PI*r*r); 
+ } } 
+class Circle1 extends Circle implements Shape, Showable  
+{  
+Circle1(double r)  
+{  
+super(r);                                                                                                                                                               
+}  
+public void area()  
+{  
+System.out.println("area of circle"+PI*r*r);  
+}  
+public void perimeter()  
+{  
+System.out.println("perimeter of circle"+2*PI*r);  
+}  
+public void show()  
+{  
+System.out.println("****This is circle****");  
+}  
+void display()  
+{  
+System.out.println("PI value"+Shape.PI);  
+} 
+}  
+class Triangle implements Showable  
+{  
+double a,b,c;  
+Triangle(double a,double b,double c)  
+{  
+this.a=a;  
+this.b=b;  
+this.c=c;  
+}  
+public void area()  
+{  
+System.out.println("area of Triangle"+a*b/2);  
+}  
+public void perimeter()  
+{  
+System.out.println("perimeter of Triangle"+a*b*c);  
+}  
+public void show() 
+ { 
+System.out.println("****This is triangle****");  
+} 
+}   
+class Main 
+{  
+public static void main(String[] args)  
+{  
+System.out.println("****Implementing circle ****");  
+Circle1 c=new Circle1(10.5);  
+c.area();  
+c.perimeter();  
+c.show();  
+c.display();                                                                                                                                                              
+System.out.println("***by reference variable***");  
+Shape s;  
+s=(Shape) c;   
+//Explicit type castingis done because circle1 class is higher than shape interface   
+s.area();  
+s.perimeter();  
+// s.display(); not possible to represent this statment because reference variables refers only abstract methods in the interface.  
+System.out.println("****Implementing Triangle ****");  
+Triangle t=new Triangle(10.5,2.2,3.3);  
+t.area();  
+t.perimeter();  
+t.show();  
+} } 
